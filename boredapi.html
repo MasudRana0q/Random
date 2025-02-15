@@ -4,24 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bored API</title>
+    <style>
+        .users{
+            background-color: aliceblue;
+            border: 1px solid aquamarine;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h2 id="activity"></h2>
-   
+    
+    
+    <div id="activity">
+    </div>
+    
 
 
     <script>
-         fetch('https://randomuser.me/api')
+        // First Method
+
+
+        
+        //  fetch('https://jsonplaceholder.typicode.com/users')
+        // .then(res => res.json())
+        // .then(data =>userDetails(data));
+        
+        // function userDetails(user) {
+        //     let data1 = '';
+        //     user.forEach(users => {
+        //         data1 = data1 + `<div class="users">
+        //         <h2>Name:${user.name} </h2>
+        //         <h3>User Name:${users.username}</h3>
+        //         <p>Email:${users.email} </p>
+                
+        //        </div> `
+        //     });
+        //     let div = document.getElementById("activity");
+        //     div.innerHTML = data1;
+
+        // }
+
+
+        // Second Method
+
+        fetch('https://jsonplaceholder.typicode.com/users')
         .then(res => res.json())
         .then(data =>{
-           let user = data.results[0];
-           let name = user.name;
-           let userName = `${name.title} ${name.first} ${name.last}`;
-           document.getElementById("activity").innerText = userName;
-           
-           
-        })
+        let div = document.getElementById("activity");
+        data.forEach(user => {
+    
+        div.innerHTML += `
+        <div class="users">
+            <h2>Name:${user.name} </h2>
+            <h3>User Name:${user.username}</h3>
+            <p>Email:${user.email} </p>
+        </div>`
+})});
+
         
     </script>
 </body>
 </html>
+
