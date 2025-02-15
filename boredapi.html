@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bored API</title>
+</head>
+<body>
+    <h2 id="activity"></h2>
+   
+
+
+    <script>
+         fetch('https://randomuser.me/api')
+        .then(res => res.json())
+        .then(data =>{
+           let user = data.results[0];
+           let name = user.name;
+           let userName = `${name.title} ${name.first} ${name.last}`;
+           document.getElementById("activity").innerText = userName;
+           
+           
+        })
+        
+    </script>
+</body>
+</html>
